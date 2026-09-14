@@ -42,5 +42,5 @@ def test_user_cannot_have_empty_password_hash():
 def test_user_password_hash_cannot_be_int():
     with pytest.raises(TypeError):
         User(email="test@email.com",
-            password_hash= "123"
+            password_hash=123
             )
