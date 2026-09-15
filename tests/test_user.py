@@ -1,5 +1,5 @@
 import pytest
-from domain.user import User
+from finances.domain.user import User
 
 # user email tests
 def test_user_has_email():
@@ -24,6 +24,42 @@ def test_user_email_cannot_be_int():
     with pytest.raises(TypeError):
         User(email=123,
             password_hash= "test_hash"
+            )
+
+def test_user_email_has_to_have_at_sign():
+    with pytest.raises(ValueError):
+        User(email="teste-email",
+             password_hash="test_hash"
+            )
+
+def test_user_email_has_text_before_at_sign():
+    with pytest.raises(ValueError):
+        User(email="@teste.com",
+             password_hash="test_hash"
+            )
+
+def test_user_email_has_text_after_at_sign():
+    with pytest.raises(ValueError):
+        User(email="teste@",
+             password_hash="test_hash"
+            )
+
+def test_user_email_cannot_have_two_at_sign():
+    with pytest.raises(ValueError):
+        User(email="teste@@email.com",
+             password_hash="test_hash"
+            )
+
+def test_user_email_has_to_have_dot_at_end():
+    with pytest.raises(ValueError):
+        User(email="teste@email",
+             password_hash="test_hash"
+            )
+
+def test_user_email_has_to_have_text_after_dot():
+    with pytest.raises(ValueError):
+        User(email="teste@email.",
+             password_hash="test_hash"
             )
 
 # user password_hash tests

@@ -4,6 +4,22 @@ class User:
             raise TypeError("Email cannot be this type")
         if email.strip() == "":
             raise ValueError("Email cannot be blank")
+
+        before, sep, end = email.partition("@") 
+        if before == "":
+            raise ValueError("Email has to have text before @")
+        if sep != "@":
+            raise ValueError("Email has to have @")
+        if end == "":
+            raise ValueError("Email has to have text after @")
+        if "@" in end:
+            raise ValueError("Email cannot have two @")
+        if "." not in end:
+            raise ValueError("Email has to have a dot")
+        parts = end.split(".")
+        if parts[1] == "":
+            raise ValueError("email has to have a domain after dot")
+        
         self.email: str = email
 
         if not isinstance(password_hash, str):
