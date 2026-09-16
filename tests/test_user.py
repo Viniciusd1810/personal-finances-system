@@ -62,6 +62,12 @@ def test_user_email_has_to_have_text_after_dot():
              password_hash="test_hash"
             )
 
+def test_user_email_extension_must_have_at_least_two_characters():
+    with pytest.raises(ValueError):
+        User(email="teste@email.b",
+             password_hash="test_hash"
+            )
+
 # user password_hash tests
 def test_user_has_password_hash():
     user = User(email="test@email.com",

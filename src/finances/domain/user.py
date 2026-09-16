@@ -1,3 +1,5 @@
+import re
+
 class User:
     def __init__(self, email,password_hash):
         if not isinstance(email, str):
@@ -5,7 +7,11 @@ class User:
         if email.strip() == "":
             raise ValueError("Email cannot be blank")
 
-        before, sep, end = email.partition("@") 
+        email_pattern = r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
+        if not re.fullmatch(email_pattern, email):
+            raise ValueError("Invalid Email")
+
+        """before, sep, end = email.partition("@") 
         if before == "":
             raise ValueError("Email has to have text before @")
         if sep != "@":
@@ -18,7 +24,7 @@ class User:
             raise ValueError("Email has to have a dot")
         parts = end.split(".")
         if parts[1] == "":
-            raise ValueError("email has to have a domain after dot")
+            raise ValueError("email has to have a domain after dot")"""
         
         self.email: str = email
 
