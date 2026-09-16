@@ -1,41 +1,50 @@
-Usuario
-Email
-Senha
-Multiplos Perfils -Futuro
+# Project Scope
 
-Conta (Usuario pode ter 1 ou mais contas)
-Tipo (Conta Corrente, Carteira, Investimento, Outros)
-Saldo Inicial
-Saldo Atual
-Movimentação (Vem da classe transações)
+## User
+Attributes:
+- Email
+- Password
 
-Transações
-Tipo (Receita, Despesa, Transferencia, Despesa Cartão)
-Descrição
-Valor
-Recorrencia
-Data de Vencimento
-Efetivado?
-Categoria
-Subcategorias
-Data Lançamento = Hora registrada
-Engargos
-observações
-Anexos
+## Profile
+- Profile Name
+- Currency
 
-Cartão de Crédito
-Vinculado a uma conta
-Limite
-Quando Despesa = Cartão
-Cartão de Crédito
-Fatura
-Limite Disponivel
-Fatura
-Despesas/Estorno
+## Account
+Attributes:
+- Account Name
+- Type
+- Initial balance
+- Actual balance
 
-Futuro
-Open Finance
-Dashboards
-Relatorios
-Orçamentos
-Objetivos
+## Transaction
+Attributes:
+- Type (Income, Expenses, Transfer, Credit Card Expense)
+- Description
+- Value
+- Recurrence
+- Due Date
+- Payment completed?
+- Category
+- Sub-Category
+- Release Date
+- Charges
+- Observations
+- Attachments
+
+## Credit Card
+Attributes:
+- Limit Total
+- Bill
+- Limit Available
+- Expenses/Payment Reversal
+
+Bussiness Rules:
+- Credit Card is linked to a Account
+
+## Future
+- Open FInance
+- Dashboards
+- Reports
+- Budgets
+- Goals
+
