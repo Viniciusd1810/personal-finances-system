@@ -34,37 +34,37 @@ def test_user_email_has_to_have_at_sign():
 
 def test_user_email_has_text_before_at_sign():
     with pytest.raises(ValueError):
-        User(email="@teste.com",
+        User(email="@test.com",
              password_hash="test_hash"
             )
 
 def test_user_email_has_text_after_at_sign():
     with pytest.raises(ValueError):
-        User(email="teste@",
+        User(email="test@",
              password_hash="test_hash"
             )
 
 def test_user_email_cannot_have_two_at_sign():
     with pytest.raises(ValueError):
-        User(email="teste@@email.com",
+        User(email="test@@email.com",
              password_hash="test_hash"
             )
 
 def test_user_email_has_to_have_dot_at_end():
     with pytest.raises(ValueError):
-        User(email="teste@email",
+        User(email="test@email",
              password_hash="test_hash"
             )
 
 def test_user_email_has_to_have_text_after_dot():
     with pytest.raises(ValueError):
-        User(email="teste@email.",
+        User(email="test@email.",
              password_hash="test_hash"
             )
 
 def test_user_email_extension_must_have_at_least_two_characters():
     with pytest.raises(ValueError):
-        User(email="teste@email.b",
+        User(email="test@email.b",
              password_hash="test_hash"
             )
 
@@ -81,7 +81,7 @@ def test_user_cannot_have_empty_password_hash():
             password_hash= ""
             )
         
-def test_user_password_hash_cannot_be_int():
+def test_user_password_hash_must_be_string():
     with pytest.raises(TypeError):
         User(email="test@email.com",
             password_hash=123
