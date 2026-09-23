@@ -70,9 +70,21 @@ def test_create_user_password_arrives_at_hash_password():
                         user_password="test_hash")
     assert fake_hasher.received_password == "test_hash"
 
+# user id tests
 def test_new_user_has_id_uuid():
     fake_hasher = FakePasswordHasher()
     create = CreateUser(fake_hasher)
     new_user = create.execute(email="test@email.com",
                         user_password="test_hash")
     assert isinstance(new_user.id,uuid.UUID)
+
+def test_create_user_generates_different_ids_for_each_execution():
+    fake_hasher = FakePasswordHasher()
+    create = CreateUser(fake_hasher)
+
+    new_user_1 = create.execute(email="test@email.com",
+                        user_password="test_hash")
+
+    new_user_2 = create.execute(email="test@email.com",
+                        user_password="test_hash")
+    assert new_user_1.id != new_user_2.id
