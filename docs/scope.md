@@ -1,11 +1,17 @@
 # Project Scope
 
+User
+└── Profiles
+    └── Accounts
+        └── Transaction
+
 ## User
 Attributes:
 - Email
 - Password
 
 ## Profile
+Atributes:
 - Profile Name
 - Currency
 
