@@ -1,7 +1,8 @@
 import re
+import uuid
 
 class User:
-    def __init__(self, email,password_hash):
+    def __init__(self, email, password_hash, id):
         if not isinstance(email, str):
             raise TypeError("Email cannot be this type")
         if email.strip() == "":
@@ -19,6 +20,14 @@ class User:
             raise ValueError("Password hash cannot be blank")
         self._password_hash = password_hash
 
+        if not isinstance(id,uuid.UUID):
+            raise TypeError("id have to be uuid")
+        self._id = id
+
     @property
     def password_hash(self):
         return self._password_hash
+
+    @property
+    def id(self):
+        return self._id
