@@ -11,4 +11,7 @@ class Profile:
     @property
     def name(self):
         return self._name
-        
+
+    @property
+    def currency(self):
+        return self._currency

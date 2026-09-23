@@ -73,7 +73,7 @@ def test_user_has_password_hash():
     user = User(email="test@email.com",
                 password_hash= "test_hash"
                 )
-    assert user._password_hash == "test_hash"
+    assert user.password_hash == "test_hash"
 
 def test_user_cannot_have_empty_password_hash():
     with pytest.raises(ValueError):
