@@ -10,7 +10,7 @@ class Profile:
             raise ValueError("name cannot be blank")
 
         if not isinstance(currency, Currency):
-            raise TypeError("Currency has to be a enum")
+            raise TypeError("currency must be a Currency enum")
         
         self._name = normalized_name
         self._currency = currency
