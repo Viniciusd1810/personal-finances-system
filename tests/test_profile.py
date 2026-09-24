@@ -64,7 +64,7 @@ def test_profile_currency_cannot_be_string():
     fake_user_id = uuid.uuid4()
 
     with pytest.raises(TypeError):
-        Profile(name="Test",
+        Profile(name="test profile",
                 currency="BRL",
                 profile_id=fake_profile_id,
                 user_id=fake_user_id
@@ -74,18 +74,40 @@ def test_profile_stores_currency():
     fake_profile_id = uuid.uuid4()
     fake_user_id = uuid.uuid4()
 
-    profile = Profile(name="profile_test",
+    profile = Profile(name="test profile",
                       currency=Currency.BRL,
                       profile_id=fake_profile_id,
                       user_id=fake_user_id
                       )
     assert profile.currency is Currency.BRL
 
+def test_profile_stores_profile_id():
+    fake_profile_id = uuid.uuid4()
+    fake_user_id = uuid.uuid4()
+
+    profile = Profile(name="test profile",
+                      currency=Currency.BRL,
+                      profile_id=fake_profile_id,
+                      user_id=fake_user_id
+                      )
+    assert profile.id == fake_profile_id
+
+def test_profile_stores_user_id():
+    fake_profile_id = uuid.uuid4()
+    fake_user_id = uuid.uuid4()
+
+    profile = Profile(name="test profile",
+                      currency=Currency.BRL,
+                      profile_id=fake_profile_id,
+                      user_id=fake_user_id
+                      )
+    assert profile.user_id == fake_user_id
+
 def test_profile_rejects_non_uuid_user_id():
     fake_profile_id = uuid.uuid4()
 
     with pytest.raises(TypeError):
-        Profile(name="test",
+        Profile(name="test profile",
                 currency=Currency.BRL,
                 profile_id=fake_profile_id,
                 user_id="fake_user_id"
@@ -95,8 +117,18 @@ def test_profile_rejects_non_uuid_profile_id():
     fake_user_id = uuid.uuid4()
 
     with pytest.raises(TypeError):
-        Profile(name="test",
+        Profile(name="test profile",
                 currency=Currency.BRL,
                 profile_id="fake_profile_id",
                 user_id=fake_user_id
+                )
+
+def test_profile_rejects_non_uuid_user_id():
+    fake_profile_id = uuid.uuid4()
+
+    with pytest.raises(TypeError):
+        Profile(name="test profile",
+                currency=Currency.BRL,
+                profile_id=fake_profile_id,
+                user_id="fake_user_id"
                 )
