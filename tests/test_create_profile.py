@@ -1,4 +1,3 @@
-import pytest
 import uuid
 
 from finances.application.create_profile import CreateProfile
