@@ -1,7 +1,8 @@
+import uuid
 from finances.domain.currency import Currency
 
 class Profile:
-    def __init__(self, name, currency):
+    def __init__(self, name, currency, profile_id, user_id):
         if not isinstance(name, str):
             raise TypeError("name cannot be this type")
 
@@ -15,6 +16,12 @@ class Profile:
         self._name = normalized_name
         self._currency = currency
 
+        if not isinstance(profile_id,uuid.UUID):
+            raise TypeError("id have to be uuid")
+        self._id = profile_id
+
+        self._user_id = user_id
+
     @property
     def name(self):
         return self._name
@@ -22,3 +29,7 @@ class Profile:
     @property
     def currency(self):
         return self._currency
+
+    @property
+    def id(self):
+        return self._id
