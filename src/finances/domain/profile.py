@@ -20,6 +20,8 @@ class Profile:
             raise TypeError("id have to be uuid")
         self._id = profile_id
 
+        if not isinstance(user_id, uuid.UUID):
+            raise TypeError("user id have to be uuid")
         self._user_id = user_id
 
     @property
@@ -33,3 +35,7 @@ class Profile:
     @property
     def id(self):
         return self._id
+
+    @property
+    def user_id(self):
+        return self._user_id
