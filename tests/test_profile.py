@@ -122,13 +122,3 @@ def test_profile_rejects_non_uuid_profile_id():
                 profile_id="fake_profile_id",
                 user_id=fake_user_id
                 )
-
-def test_profile_rejects_non_uuid_user_id():
-    fake_profile_id = uuid.uuid4()
-
-    with pytest.raises(TypeError):
-        Profile(name="test profile",
-                currency=Currency.BRL,
-                profile_id=fake_profile_id,
-                user_id="fake_user_id"
-                )

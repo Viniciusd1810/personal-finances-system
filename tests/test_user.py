@@ -116,7 +116,8 @@ def test_user_email_extension_must_have_at_least_two_characters():
 def test_user_has_password_hash():
     fake_uuid = uuid.uuid4()
 
-    user = User(email="test@email.com",
+    user = User(
+                email="test@email.com",
                 password_hash= "test_hash",
                 id=fake_uuid
                 )
@@ -146,7 +147,8 @@ def test_user_password_hash_must_be_string():
 def test_user_has_id():
     fake_uuid = uuid.uuid4()
 
-    user = User(email="test@email.com",
+    user = User(
+            email="test@email.com",
             password_hash= "test_hash",
             id=fake_uuid
             )
@@ -154,7 +156,8 @@ def test_user_has_id():
 
 def test_user_rejects_non_uuid_id():
     with pytest.raises(TypeError):
-        User(email="test@email.com",
-                password_hash= "test_hash",
-                id="test_user_id_fake"
-                )
+        User(
+            email="test@email.com",
+            password_hash= "test_hash",
+            id="test_user_id_fake"
+            )
